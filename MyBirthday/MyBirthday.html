@@ -63,19 +63,28 @@
                 </div>
                 <div class="avatar">
                     <!-- 3. Avatar của người bạn muốn gởi lời chúc -->
-                    <img src="./Ngan.jpg" alt="" class="avatar__img" onclick="showMessage()" />
+                    <img src="./Ngan1.jpg" alt="" class="avatar__img" onclick="showMessage()" />
                     <!-- 4. Tên của người đó -->
-                    <h1 onclick="showMessage()" class="avatar__title">Phương Ngân</h1>
+                    <h1 onclick="showMessage()" class="avatar__title" align="center">Phương Ngân</h1>
                 </div>
-                <!-- 5. Phần nhạc -->
-				<iframe src="./silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
-                <audio id="music" autoplay loop>
-                    <source src="./music.mp3" type="audio/mpeg">
-                </audio>
-                
             </div>
         </div>
+		<!-- 5. Phần nhạc -->
+				<iframe src="./silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
+              	<audio id="music" autoplay loop>
+                    <source src="./music.mp3" type="audio/mpeg">
+                </audio>
+		<script type="text/javascript">
+			document.getElementById('music').play();
+		</script>
         <script>
+			var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+    			if(!isChrome){
+      				$('#iframeAudio').remove();
+    			}
+  				else{
+     				$('#playAudio').remove();
+  				}
             if (document.location.search.match(/type=embed/gi)) {
                 window.parent.postMessage("resize", "*");
             }
